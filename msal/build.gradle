@@ -368,7 +368,7 @@ publishing {
 
             artifact(sourcesJar)
             artifact(javadocJar)
-            artifact("$buildDir/outputs/aar/msal-${project.version}.aar")
+            //artifact("$buildDir/outputs/aar/msal-${project.version}.aar")
         }
 
     }
