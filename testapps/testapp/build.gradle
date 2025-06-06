@@ -116,7 +116,7 @@ dependencies {
 
     // Compile Dependency
     localImplementation project(':msal')
-    distImplementation "com.microsoft.identity.client:msal:${msalVersion}"
+    distImplementation "com.github.mtotschnig:microsoft-authentication-library-common-for-android:76216e910e"
     implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.kotlinXCoroutinesVersion"

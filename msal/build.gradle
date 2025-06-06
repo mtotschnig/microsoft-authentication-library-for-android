@@ -253,7 +253,7 @@ dependencies {
 
     snapshotApi(group: 'com.microsoft.identity', name: 'common', version: commonVersion, changing: true)
 
-    distApi("com.microsoft.identity:common:${commonVersion}") {
+    distApi("com.github.mtotschnig:microsoft-authentication-library-common-for-android:76216e910e") {
         transitive = true
     }
 
