@@ -6,9 +6,7 @@ pluginManagement {
          gradlePluginPortal()
      }
  }
-include ':msal', ':common', ':keyvault', ':labapi', ':testutils', ':pop-benchmarker',
-        ':package-inspector', ':msalautomationapp', ':uiautomationutilities', ':common4j',
-        ':LabApiUtilities'
+include ':msal', ':package-inspector'
 
 /*project(':common').projectDir = new File('common/common')
 project(':keyvault').projectDir = new File('common/keyvault')

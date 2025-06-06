@@ -87,8 +87,6 @@ android {
         }
     }
 
-    publishNonDefault true
-
     lintOptions {
         abortOnError true
         disable 'MissingPermission'
@@ -110,12 +108,6 @@ android {
     flavorDimensions "main"
 
     productFlavors {
-        // The 'local' productFlavor sources common from mavenLocal and is intended to be used
-        // during development.
-        local {
-            dimension "main"
-            versionNameSuffix "-local"
-        }
 
         snapshot {
             dimension "main"
@@ -225,7 +217,6 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$rootProject.ext.mockitoCoreVersion"
     testImplementation ("org.robolectric:robolectric:$rootProject.ext.robolectricVersion")
     testImplementation "androidx.test:core:$rootProject.ext.androidxTestCoreVersion"    
-    testLocalImplementation project(':testutils')
     testDistImplementation("com.microsoft.identity:testutils:0.0+") {
         exclude module: 'common'
         exclude group: 'com.microsoft.identity', module: 'LabApiUtilities'
@@ -246,10 +237,6 @@ dependencies {
     // Set this dependency to use JUnit 4 rules
     androidTestImplementation "androidx.test:rules:$rootProject.rulesVersion"
     androidTestImplementation "org.mockito:mockito-android:$rootProject.ext.mockitoAndroidVersion"
-    // 'local' flavor dependencies
-    localApi(project(":common")) {
-        transitive = true
-    }
 
     snapshotApi(group: 'com.microsoft.identity', name: 'common', version: commonVersion, changing: true)
 
@@ -257,7 +244,6 @@ dependencies {
         transitive = true
     }
 
-    testLocalImplementation(testFixtures(project(":common4j")))
     String common4jVersion = project.hasProperty("distCommon4jVersion") ? project.distCommon4jVersion : "1.0.+"
     testDistImplementation(testFixtures("com.microsoft.identity:common4j:${common4jVersion}"))
 
