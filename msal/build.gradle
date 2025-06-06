@@ -87,8 +87,6 @@ android {
         }
     }
 
-    publishNonDefault false
-
     lintOptions {
         abortOnError true
         disable 'MissingPermission'
@@ -111,10 +109,6 @@ android {
 
     productFlavors {
 
-        snapshot {
-            dimension "main"
-        }
-
         // The 'dist' productFlavor sources common from a central repository and is intended
         // to be used for releases.
         dist {
@@ -131,7 +125,7 @@ android {
 
     variantFilter { variant ->
 
-        if(variant.buildType.name.endsWith('debug')) {
+        if (variant.buildType.name.endsWith('debug')) {
             variant.setIgnore(true)
         }
     }
@@ -235,7 +229,7 @@ dependencies {
     }
 
     testImplementation "io.mockk:mockk:$rootProject.ext.mockkVersion"
-    
+
     testImplementation "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockVersion"
     testImplementation "org.powermock:powermock-module-junit4-rule:$rootProject.ext.powerMockVersion"
     testImplementation "org.powermock:powermock-api-mockito2:$rootProject.ext.powerMockVersion"
@@ -246,8 +240,6 @@ dependencies {
     // Set this dependency to use JUnit 4 rules
     androidTestImplementation "androidx.test:rules:$rootProject.rulesVersion"
     androidTestImplementation "org.mockito:mockito-android:$rootProject.ext.mockitoAndroidVersion"
-
-    snapshotApi(group: 'com.microsoft.identity', name: 'common', version: commonVersion, changing: true)
 
     distApi("com.github.mtotschnig:microsoft-authentication-library-common-for-android:20d44e4dff") {
         transitive = true
@@ -294,21 +286,6 @@ task pmd(type: Pmd) {
         xml.enabled = false
         html.enabled = true
     }
-}
-
-afterEvaluate {
-   // Gradle 6.1.1 and Android Gradle Plugin 4.0.1 doesn't rename the file (see 'outputFileName' above)
-   // Adding this work around to have the file properly renamed.
-   tasks.named("assembleDistRelease").configure {
-       def buildFile = file("$buildDir/outputs/aar/${archivesBaseName}-dist-release.aar")
-       print "Build file $buildFile"
-       doLast {
-           println "Renaming build file $buildFile to '$buildDir${File.separator}outputs${File.separator}aar${File.separator}${archivesBaseName}-${version}.aar'"
-           if (!buildFile.renameTo("$buildDir${File.separator}outputs${File.separator}aar${File.separator}${archivesBaseName}-${version}.aar")) {
-               println "Rename failed!"
-           }
-       }
-   }
 }
 
 publishing {
@@ -377,7 +354,7 @@ publishing {
 
             artifact(sourcesJar)
             artifact(javadocJar)
-            artifact("$buildDir/outputs/aar/msal-${project.version}.aar")
+            artifact("$buildDir/outputs/aar/msal-dist-release.aar")
         }
 
     }
