@@ -27,12 +27,7 @@ allprojects {
             name 'Duo-SDK-Feed'
         }
         maven {
-            name "vsts-maven-adal-android"
-            url "https://identitydivision.pkgs.visualstudio.com/_packaging/AndroidADAL/maven/v1"
-            credentials {
-                username project.vstsUsername
-                password project.vstsPassword
-            }
+            url "https://jitpack.io"
         }
     }
 

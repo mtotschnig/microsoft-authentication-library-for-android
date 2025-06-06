@@ -10,15 +10,15 @@ include ':msal', ':common', ':keyvault', ':labapi', ':testutils', ':pop-benchmar
         ':package-inspector', ':msalautomationapp', ':uiautomationutilities', ':common4j',
         ':LabApiUtilities'
 
-project(':common').projectDir = new File('common/common')
+/*project(':common').projectDir = new File('common/common')
 project(':keyvault').projectDir = new File('common/keyvault')
 project(':labapi').projectDir = new File('common/labapi')
 project(':testutils').projectDir = new File('common/testutils')
 project(':uiautomationutilities').projectDir = new File('common/uiautomationutilities')
 project(':common4j').projectDir = new File('common/common4j')
-project(':LabApiUtilities').projectDir = new File('common/LabApiUtilities')
+project(':LabApiUtilities').projectDir = new File('common/LabApiUtilities')*/
 
 // test apps
-include ':testapps:sample'
+/*include ':testapps:sample'
 include ':testapps:testapp'
-include ':testapps:automationapp'
+include ':testapps:automationapp'*/
